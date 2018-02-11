@@ -5,11 +5,12 @@ def guessing_game_functions(ulim, llim):
     name = raw_input("please enter your name: ")
     print "Welcome to the guessing game {}, have fun" .format(name)
     num = random.randint(llim, ulim)
-    guess_number(num, name)
+    counter = 1
+    return guess_number(num, name, counter, ulim, llim)
 
 
 def guess_number(num, name, counter, ulim, llim):
-    counter = 1
+    #counter = 1
     user_guess = None
     while num != user_guess:
         print counter
@@ -35,14 +36,16 @@ def guess_number(num, name, counter, ulim, llim):
         except:
             print "Please enter a valid integer"
             continue
-    play_again(num, name, counter, ulim, llim)
+    fi_score = play_again(num, name, counter, ulim, llim)
+    return fi_score
 
 
 def play_again(num, name, counter, ulim, llim):
     choice = raw_input("Would you like to play again? Enter 'y' or 'n': ")
     while choice == 'y':
         guess_number(num, name, counter, ulim, llim)
-    enter_range(counter, ulim, llim)
+    f_score = enter_range(counter, ulim, llim)
+    return f_score
 
 
 def enter_range(counter, ulim, llim):
@@ -72,4 +75,6 @@ def enter_range(counter, ulim, llim):
 
 
 
+
 trial = guessing_game_functions(70, 30)
+print trial
